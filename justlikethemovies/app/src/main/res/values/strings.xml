@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">:: &amp;JLTM</string>
+    <string name="api_key">YOUR_API_KEY_HERE</string>
+    <string name="loading">Fetching results...</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_sort">Sort Movies By...</string>
+    <string name="network_error">No results. Please check your internet settings and try again.</string>
+    <string name="api_error">Your API Key isn\'t set up properly. Please see readme file for instructions!</string>
+    <string name="sorted_by_popularity">Sorted by Popularity!</string>
+    <string name="sorted_by_rating">Sorted by Rating!</string>
+    <string name="released_in">Released in: \n</string>
+    <string name="rated">Rated: \n</string>
+    <string name="trailer_button">Video</string>
+    <string name="sort_by_pop">Popularity</string>
+    <string name="sort_by_rating">Rating</string>
+    <string name="tmdb_disclaimer">This product uses the TMDb API but is not endorsed or certified by TMDb.</string>
+</resources>
