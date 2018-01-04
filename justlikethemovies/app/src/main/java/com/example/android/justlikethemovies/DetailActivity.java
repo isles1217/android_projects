@@ -86,7 +86,10 @@ public class DetailActivity extends AppCompatActivity {
       mMovieRating.append(rating);
       mMovieDetails.setText(detail);
 
-      Picasso.with(context).load(imageUri).into(mImageView);
+      Picasso.with(context).load(imageUri)
+              .placeholder(R.drawable.ic_action_name)
+              .error(R.drawable.ic_action_name)
+              .into(mImageView);
     }
 
 

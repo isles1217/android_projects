@@ -31,7 +31,10 @@ public class PosterActivity extends AppCompatActivity{
     Context context = this;
     String posterPath = movie.getPosterPath();
     Uri imageUri = NetworkUtils.builderMoviePosterUrl(posterPath, true);
-    Picasso.with(context).load(imageUri).into(mImageView);
+    Picasso.with(context).load(imageUri)
+            .placeholder(R.drawable.ic_action_name)
+            .error(R.drawable.ic_action_name)
+            .into(mImageView);
 
   }
 }

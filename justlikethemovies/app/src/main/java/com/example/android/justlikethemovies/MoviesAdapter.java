@@ -99,7 +99,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesAdap
 //    URL imageURL = NetworkUtils.builderMoviePosterUrl(posterPath, false);
     Uri imageUri = NetworkUtils.builderMoviePosterUrl(posterPath, false);
 
-    Picasso.with(context).load(imageUri).into(holder.mImageView);
+    Picasso.with(context).load(imageUri)
+            .placeholder(R.drawable.ic_action_name)
+            .error(R.drawable.ic_action_name)
+            .into(holder.mImageView);
     holder.mImageView.setVisibility(View.VISIBLE);
   }
 

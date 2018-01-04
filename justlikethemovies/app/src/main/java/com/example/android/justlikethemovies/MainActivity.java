@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,6 +48,8 @@ implements MoviesAdapter.MoviesAdapterOnClickHandler{
   private ImageView mImageError;
   private ImageView mTMDBLogo;
   private TextView mTMDBDisclaimer;
+  private final String API_KEY_ERROR = "YOUR_API_KEY_HERE";
+
 
 
     @Override
@@ -73,7 +76,7 @@ implements MoviesAdapter.MoviesAdapterOnClickHandler{
       mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
       mRecyclerView.setHasFixedSize(true);
 
-      mLayoutManager = new GridLayoutManager(this, 3);
+      mLayoutManager = new GridLayoutManager(this, numberOfColumns());
       mRecyclerView.setLayoutManager(mLayoutManager);
 
       mMovieAdapter = new MoviesAdapter(movieList, this);
@@ -81,7 +84,7 @@ implements MoviesAdapter.MoviesAdapterOnClickHandler{
 
       String key = NetworkUtils.getApiKey();
 
-      if(!"YOUR_API_KEY_HERE".equals(key) && key != null && !"".equals(key)){
+      if(!API_KEY_ERROR.equals(key) && key != null && !"".equals(key)){
         loadMovieData();
       } else {
         mTextDisplay.setVisibility(View.GONE);
@@ -159,6 +162,20 @@ implements MoviesAdapter.MoviesAdapterOnClickHandler{
     FetchMovieData task = new FetchMovieData(mMovieAdapter);
     task.execute(sortByPopularity);
   }
+
+
+  private int numberOfColumns() {
+    DisplayMetrics displayMetrics = new DisplayMetrics();
+    getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+    // You can change this divider to adjust the size of the poster
+    int widthDivider = 150;
+    int width = displayMetrics.widthPixels;
+    int nColumns = width / widthDivider;
+    if (nColumns < 2) return 2;
+    return nColumns;
+  }
+
 
 
     private void unpackMovies(){
